@@ -1,0 +1,19 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local1="clr-namespace:LAM.View" x:Class="LAM.View.TelasTeste"
+    Title="Teste Monitores"
+    Height="190"
+    Width="300"
+    MinHeight="10"
+    MinWidth="300"
+    ResizeMode="CanResizeWithGrip"
+    ShowInTaskbar="False"
+    WindowStartupLocation="CenterOwner" 
+    >
+    <Grid>
+
+        <local1:TelasCrtl HorizontalAlignment="Left" Margin="10,-60,0,0" VerticalAlignment="Top" Height="210"/>
+
+    </Grid>
+</Window>

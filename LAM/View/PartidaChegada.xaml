@@ -1,0 +1,22 @@
+﻿<UserControl x:Class="LAM.View.PartidaChegada"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" Height="600" Width="536">
+    <Grid Margin="0,0,0,356">
+        <DataGrid HorizontalAlignment="Left" Margin="10,60,0,-17" VerticalAlignment="Top" Height="201" Width="522"  ItemsSource="{Binding Voos}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header ="Compania &#xA;Airline" />
+                <DataGridTextColumn Header ="Voo &#xA;Fligth"/>
+                <DataGridTextColumn Header ="Destino &#xA;Destination "/>
+                <DataGridTextColumn Header ="Partida &#xA;Departure"/>
+                <DataGridTextColumn Header ="Previsão &#xA;Expected"/>
+                <DataGridTextColumn Header ="Observação &#xA;Remark"/>
+                
+            </DataGrid.Columns>
+            
+        </DataGrid>
+
+    </Grid>
+</UserControl>
