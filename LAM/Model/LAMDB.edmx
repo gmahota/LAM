@@ -1,0 +1,296 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="LAMModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Balcaos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Companhia" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Voo" Type="nvarchar" MaxLength="250" />
+          <Property Name="Cidade" Type="nvarchar" MaxLength="250" />
+          <Property Name="Classe" Type="nvarchar" MaxLength="250" />
+          <Property Name="Balcao1" Type="int" />
+          <Property Name="Tv" Type="int" />
+        </EntityType>
+        <EntityType Name="Chegada">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Voo" Type="nvarchar" MaxLength="250" />
+          <Property Name="Destino" Type="nvarchar" MaxLength="250" />
+          <Property Name="Chegada1" Type="nvarchar" MaxLength="250" />
+          <Property Name="Previsao" Type="nvarchar" MaxLength="250" />
+          <Property Name="Obs" Type="nvarchar" MaxLength="250" />
+          <Property Name="Companhia" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="Companhia">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Icon" Type="varbinary(max)" />
+          <Property Name="Contacto" Type="nvarchar" MaxLength="250" />
+          <Property Name="Nome" Type="nvarchar" MaxLength="250" />
+          <Property Name="Sigla" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Partidas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Companhia" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Voo" Type="nvarchar" MaxLength="250" />
+          <Property Name="Partida1" Type="nvarchar" MaxLength="250" />
+          <Property Name="Previsao" Type="nvarchar" MaxLength="250" />
+          <Property Name="Obs" Type="nvarchar" MaxLength="250" />
+          <Property Name="Destino" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <Association Name="FK_Balcao_Companhia">
+          <End Role="Companhia" Type="Self.Companhia" Multiplicity="0..1" />
+          <End Role="Balcaos" Type="Self.Balcaos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Companhia">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Balcaos">
+              <PropertyRef Name="Companhia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Chegada_Companhia">
+          <End Role="Companhia" Type="Self.Companhia" Multiplicity="0..1" />
+          <End Role="Chegada" Type="Self.Chegada" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Companhia">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Chegada">
+              <PropertyRef Name="Companhia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Partida_Companhia">
+          <End Role="Companhia" Type="Self.Companhia" Multiplicity="0..1" />
+          <End Role="Partidas" Type="Self.Partidas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Companhia">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Partidas">
+              <PropertyRef Name="Companhia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LAMModelStoreContainer">
+          <EntitySet Name="Balcaos" EntityType="Self.Balcaos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Chegada" EntityType="Self.Chegada" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Companhia" EntityType="Self.Companhia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Partidas" EntityType="Self.Partidas" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Balcao_Companhia" Association="Self.FK_Balcao_Companhia">
+            <End Role="Companhia" EntitySet="Companhia" />
+            <End Role="Balcaos" EntitySet="Balcaos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Chegada_Companhia" Association="Self.FK_Chegada_Companhia">
+            <End Role="Companhia" EntitySet="Companhia" />
+            <End Role="Chegada" EntitySet="Chegada" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Partida_Companhia" Association="Self.FK_Partida_Companhia">
+            <End Role="Companhia" EntitySet="Companhia" />
+            <End Role="Partidas" EntitySet="Partidas" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LAMModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Chegada">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Voo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Destino" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Chegada1" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Previsao" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Obs" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Companhia" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="Companhia1" Relationship="Self.FK_Chegada_Companhia" FromRole="Chegada" ToRole="Companhia" />
+        </EntityType>
+        <EntityType Name="Companhia">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Icon" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Contacto" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Chegada" Relationship="Self.FK_Chegada_Companhia" FromRole="Companhia" ToRole="Chegada" />
+          <Property Name="Nome" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Sigla" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Balcaos" Relationship="LAMModel.FK_Balcao_Companhia" FromRole="Companhia" ToRole="Balcao" />
+          <NavigationProperty Name="Partidas" Relationship="LAMModel.FK_Partida_Companhia" FromRole="Companhia" ToRole="Partida" />
+        </EntityType>
+        <Association Name="FK_Chegada_Companhia">
+          <End Role="Companhia" Type="Self.Companhia" Multiplicity="0..1" />
+          <End Role="Chegada" Type="Self.Chegada" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Companhia">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Chegada">
+              <PropertyRef Name="Companhia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LAMEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Chegada" EntityType="Self.Chegada" />
+          <EntitySet Name="Companhia" EntityType="Self.Companhia" />
+          <AssociationSet Name="FK_Chegada_Companhia" Association="Self.FK_Chegada_Companhia">
+            <End Role="Companhia" EntitySet="Companhia" />
+            <End Role="Chegada" EntitySet="Chegada" />
+          </AssociationSet>
+          <EntitySet Name="Balcaos" EntityType="LAMModel.Balcao" />
+          <EntitySet Name="Partidas" EntityType="LAMModel.Partida" />
+          <AssociationSet Name="FK_Balcao_Companhia" Association="LAMModel.FK_Balcao_Companhia">
+            <End Role="Companhia" EntitySet="Companhia" />
+            <End Role="Balcao" EntitySet="Balcaos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Partida_Companhia" Association="LAMModel.FK_Partida_Companhia">
+            <End Role="Companhia" EntitySet="Companhia" />
+            <End Role="Partida" EntitySet="Partidas" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Balcao">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Companhia" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Voo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Cidade" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Classe" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Balcao1" Type="Int32" />
+          <Property Name="Tv" Type="Int32" />
+          <NavigationProperty Name="Companhia1" Relationship="LAMModel.FK_Balcao_Companhia" FromRole="Balcao" ToRole="Companhia" />
+        </EntityType>
+        <EntityType Name="Partida">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Companhia" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Voo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Partida1" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Previsao" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Obs" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Companhia1" Relationship="LAMModel.FK_Partida_Companhia" FromRole="Partida" ToRole="Companhia" />
+          <Property Name="Destino" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_Balcao_Companhia">
+          <End Type="LAMModel.Companhia" Role="Companhia" Multiplicity="0..1" />
+          <End Type="LAMModel.Balcao" Role="Balcao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Companhia">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Balcao">
+              <PropertyRef Name="Companhia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Partida_Companhia">
+          <End Type="LAMModel.Companhia" Role="Companhia" Multiplicity="0..1" />
+          <End Type="LAMModel.Partida" Role="Partida" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Companhia">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Partida">
+              <PropertyRef Name="Companhia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="LAMModelStoreContainer" CdmEntityContainer="LAMEntities">
+    <EntitySetMapping Name="Chegada">
+      <EntityTypeMapping TypeName="IsTypeOf(LAMModel.Chegada)">
+        <MappingFragment StoreEntitySet="Chegada">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Voo" ColumnName="Voo" />
+          <ScalarProperty Name="Destino" ColumnName="Destino" />
+          <ScalarProperty Name="Chegada1" ColumnName="Chegada1" />
+          <ScalarProperty Name="Previsao" ColumnName="Previsao" />
+          <ScalarProperty Name="Obs" ColumnName="Obs" />
+          <ScalarProperty Name="Companhia" ColumnName="Companhia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Companhia">
+      <EntityTypeMapping TypeName="IsTypeOf(LAMModel.Companhia)">
+        <MappingFragment StoreEntitySet="Companhia">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Icon" ColumnName="Icon" />
+          <ScalarProperty Name="Contacto" ColumnName="Contacto" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="Sigla" ColumnName="Sigla" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Balcaos">
+      <EntityTypeMapping TypeName="IsTypeOf(LAMModel.Balcao)">
+        <MappingFragment StoreEntitySet="Balcaos">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Companhia" ColumnName="Companhia" />
+          <ScalarProperty Name="Voo" ColumnName="Voo" />
+          <ScalarProperty Name="Cidade" ColumnName="Cidade" />
+          <ScalarProperty Name="Classe" ColumnName="Classe" />
+          <ScalarProperty Name="Balcao1" ColumnName="Balcao1" />
+          <ScalarProperty Name="Tv" ColumnName="Tv" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Partidas">
+      <EntityTypeMapping TypeName="IsTypeOf(LAMModel.Partida)">
+        <MappingFragment StoreEntitySet="Partidas">
+          <ScalarProperty Name="Destino" ColumnName="Destino" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Companhia" ColumnName="Companhia" />
+          <ScalarProperty Name="Voo" ColumnName="Voo" />
+          <ScalarProperty Name="Partida1" ColumnName="Partida1" />
+          <ScalarProperty Name="Previsao" ColumnName="Previsao" />
+          <ScalarProperty Name="Obs" ColumnName="Obs" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

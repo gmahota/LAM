@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<partidas tv ="1">
+  <partida icon="/LAM;component/Resources/Logotipos/LAM.png" compaina="Lam" voo="TM312" destino="Pemba" partida="10:20" previsao="" obs=""/>
+  <partida icon="/LAM;component/Resources/Logotipos/LAM.png" compaina="Lam" voo="TM341" destino="Pemba" partida="10:20" previsao="" obs=""/>
+</partidas>

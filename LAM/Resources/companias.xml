@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<companias>
+<compania name="LAM" descricao="Linhas Aereas de Moçambique" icon="/LAM;component/Resources/Logotipos/LAM.png" contacto=""/>
+<compania name="SAA" descricao="" icon="/LAM;component/Resources/Logotipos/saa.gif" contacto=""/>
+</companias>

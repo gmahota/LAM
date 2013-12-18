@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<chegadas tv ="2">
+  <chegada icon="/LAM;component/Resources/Logotipos/LAM.png" voo="TM312" compania="LAM" destino="Pemba" chegada="10:20" previsao="" obs=""/>
+  <chegada icon="/LAM;component/Resources/Logotipos/LAM.png" voo="TM313" compania="LAM" destino="Pemba" chegada="14:20" previsao="" obs=""/>
+
+
+</chegadas>
